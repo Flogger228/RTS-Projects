@@ -1,0 +1,282 @@
+/* IRON WALL: FINAL ASSAULT - Stylesheet */
+/* Edit: Customize colors, fonts, and animations here */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0a0a0a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Press Start 2P', monospace;
+  overflow: hidden;
+}
+
+#game-container {
+  position: relative;
+  width: 520px;
+  height: 520px;
+  border: 4px solid #4a4a4a;
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.3), inset 0 0 30px rgba(0, 0, 0, 0.8);
+}
+
+#gameCanvas {
+  display: block;
+  background: #1a1a1a;
+  /* Edit: Enable pixelated rendering for retro feel */
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* SCREENS - Overlay screens */
+.screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 10;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* MAIN MENU */
+#menu-content, #gameover-content, #victory-content {
+  text-align: center;
+  color: #00ff00;
+  text-shadow: 0 0 10px #00ff00;
+}
+
+#game-title {
+  font-size: 28px;
+  margin-bottom: 5px;
+  letter-spacing: 3px;
+  animation: textGlow 2s ease-in-out infinite;
+}
+
+#game-subtitle {
+  font-size: 14px;
+  color: #ffaa00;
+  text-shadow: 0 0 10px #ffaa00;
+  margin-bottom: 30px;
+}
+
+/* Edit: Change glow animation speed or colors */
+@keyframes textGlow {
+  0%, 100% { text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; }
+  50% { text-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00, 0 0 60px #00ff00; }
+}
+
+.menu-label {
+  font-size: 10px;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+#difficulty-select {
+  margin: 20px 0;
+}
+
+.menu-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 11px;
+  padding: 10px 15px;
+  margin: 5px;
+  background: transparent;
+  border: 2px solid #00ff00;
+  color: #00ff00;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-shadow: 0 0 5px #00ff00;
+}
+
+.menu-btn:hover {
+  background: #00ff00;
+  color: #000;
+  box-shadow: 0 0 20px #00ff00;
+}
+
+.diff-btn.active {
+  background: #00ff00;
+  color: #000;
+}
+
+.start-btn {
+  display: block;
+  margin: 20px auto;
+  font-size: 14px;
+  padding: 12px 25px;
+  border-color: #ffaa00;
+  color: #ffaa00;
+  text-shadow: 0 0 5px #ffaa00;
+}
+
+.start-btn:hover {
+  background: #ffaa00;
+  color: #000;
+  box-shadow: 0 0 20px #ffaa00;
+}
+
+.small-btn {
+  font-size: 9px;
+  border-color: #666;
+  color: #666;
+}
+
+/* GAME OVER & VICTORY */
+#gameover-title {
+  color: #ff0000;
+  text-shadow: 0 0 20px #ff0000;
+  font-size: 24px;
+  margin-bottom: 20px;
+  animation: textGlow 1s ease-in-out infinite;
+}
+
+#victory-title {
+  color: #ffaa00;
+  text-shadow: 0 0 20px #ffaa00;
+  font-size: 24px;
+  margin-bottom: 20px;
+  animation: textGlow 0.5s ease-in-out infinite;
+}
+
+#victory-text {
+  color: #00ff00;
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+#gameover-score, #victory-score {
+  color: #fff;
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+/* HUD */
+#hud {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+#hud-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 8px;
+  color: #00ff00;
+  text-shadow: 0 0 5px #00ff00;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 5px 8px;
+  border: 1px solid #00ff00;
+}
+
+.hud-label {
+  color: #aaa;
+  margin-right: 3px;
+}
+
+/* BOSS WARNING */
+#boss-warning {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  pointer-events: none;
+  animation: warningFlash 0.5s ease-in-out infinite;
+}
+
+@keyframes warningFlash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+#warning-text {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 16px;
+  color: #ff0000;
+  text-shadow: 0 0 20px #ff0000;
+  text-align: center;
+  line-height: 1.8;
+}
+
+/* BOSS HEALTH BAR */
+#boss-health-container {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  pointer-events: none;
+  text-align: center;
+}
+
+#boss-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  color: #ff0000;
+  text-shadow: 0 0 10px #ff0000;
+  margin-bottom: 5px;
+}
+
+#boss-health-bar {
+  width: 300px;
+  height: 15px;
+  background: #333;
+  border: 2px solid #ff0000;
+}
+
+#boss-health-fill {
+  width: 100%;
+  height: 100%;
+  background: #ff0000;
+  transition: width 0.3s;
+  box-shadow: 0 0 10px #ff0000;
+}
+
+/* PAUSE OVERLAY */
+#pause-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#pause-text {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 28px;
+  color: #fff;
+  text-shadow: 0 0 20px #fff;
+  margin-bottom: 20px;
+}
+
+#pause-hint {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  color: #aaa;
+}
+
+/* Edit: Add custom styles for new UI elements */

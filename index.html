@@ -1,0 +1,89 @@
+<!-- IRON WALL: FINAL ASSAULT - HTML Structure -->
+<!-- Placeholder images are defined as data URIs or simple drawn shapes -->
+<!-- Edit: Replace placeholder canvas drawings with actual sprite images -->
+
+<div id="game-container">
+  <!-- Main Menu Screen -->
+  <div id="menu-screen" class="screen">
+    <div id="menu-content">
+      <h1 id="game-title">IRON WALL</h1>
+      <h2 id="game-subtitle">FINAL ASSAULT</h2>
+      
+      <div id="difficulty-select">
+        <p class="menu-label">SELECT DIFFICULTY:</p>
+        <button class="menu-btn diff-btn active" data-diff="1">◈ RECRUIT</button>
+        <button class="menu-btn diff-btn" data-diff="2">◈ VETERAN</button>
+        <button class="menu-btn diff-btn" data-diff="3">◈ ELITE</button>
+      </div>
+      
+      <button id="start-btn" class="menu-btn start-btn">▶ START MISSION</button>
+      <button id="credits-btn" class="menu-btn small-btn">CREDITS</button>
+    </div>
+  </div>
+  
+  <!-- Game Over Screen -->
+  <div id="gameover-screen" class="screen hidden">
+    <div id="gameover-content">
+      <h2 id="gameover-title">MISSION FAILED</h2>
+      <p id="gameover-score">SCORE: <span id="final-score">0</span></p>
+      <button id="restart-btn" class="menu-btn">◀ RETRY MISSION</button>
+      <button id="menu-btn" class="menu-btn small-btn">MAIN MENU</button>
+    </div>
+  </div>
+  
+  <!-- Victory Screen -->
+  <div id="victory-screen" class="screen hidden">
+    <div id="victory-content">
+      <h2 id="victory-title">VICTORY!</h2>
+      <p id="victory-text">THE ONSLAUGHT IS DESTROYED</p>
+      <p id="victory-score">FINAL SCORE: <span id="victory-final-score">0</span></p>
+      <button id="victory-restart-btn" class="menu-btn">▶ PLAY AGAIN</button>
+    </div>
+  </div>
+  
+  <!-- HUD Overlay (visible during gameplay) -->
+  <div id="hud" class="hidden">
+    <div id="hud-top">
+      <div id="hud-lives">
+        <!-- Edit: Change the life icon character or add an image -->
+        <span class="hud-label">LIVES:</span>
+        <span id="lives-display">◈◈◈</span>
+      </div>
+      <div id="hud-powerup">
+        <span class="hud-label">POWER:</span>
+        <span id="powerup-display">NONE</span>
+      </div>
+      <div id="hud-enemies">
+        <span class="hud-label">HOSTILES:</span>
+        <span id="enemies-display">◘◘◘◘◘◘◘◘◘◘</span>
+      </div>
+      <div id="hud-score">
+        <span class="hud-label">SCORE:</span>
+        <span id="score-display">0</span>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Boss Warning Banner -->
+  <div id="boss-warning" class="hidden">
+    <div id="warning-text">⚠ WARNING ⚠<br>BOSS INCOMING</div>
+  </div>
+  
+  <!-- Boss Health Bar -->
+  <div id="boss-health-container" class="hidden">
+    <div id="boss-label">THE ONSLAUGHT</div>
+    <div id="boss-health-bar">
+      <div id="boss-health-fill"></div>
+    </div>
+  </div>
+  
+  <!-- Pause Overlay -->
+  <div id="pause-overlay" class="hidden">
+    <div id="pause-text">PAUSED</div>
+    <p id="pause-hint">PRESS ESC TO CONTINUE</p>
+  </div>
+  
+  <!-- Main Game Canvas -->
+  <!-- Edit: Adjust canvas size in CSS/JS if needed (currently 520x520) -->
+  <canvas id="gameCanvas" width="520" height="520"></canvas>
+</div>
